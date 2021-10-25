@@ -15,7 +15,8 @@
 no visual studio -> ferramentas -> Gerenciador de Pacotes do NuGet -> Console do Gerenciador de Pacotes
 no terminal que se abriu
 
-1. -> add-migration "nome para migration"
+1. add-migration "nome para migration"
 semelhante a um commit do git
-2.--> update-database
+
+2. update-database
 para salvar no seu database local as alterações feitas
