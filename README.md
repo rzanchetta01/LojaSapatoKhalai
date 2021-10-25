@@ -1,13 +1,13 @@
 # LojaSapatoKhalai
  
- #Requisitos 
+ # Requisitos 
 ter sql server instalado
 entity framework core
 entity framework core.sql
 entity framework core.tools
 entity framework core.desing
 
-#Configurando ambiente
+# Configurando ambiente
 1º Adicionar uma connection string sua em appSetings.json
 2º Alterar em startup.cs para sua connection string no método ConfigureServices
 exemplo: 
@@ -32,7 +32,7 @@ depois:
  
  Assim evitando problemas com o sql
  
- #Comando de terminal pro entity framework
+ # Comando de terminal pro entity framework
  no visual studio -> ferramentas -> Gerenciador de Pacotes do NuGet -> Console do Gerenciador de Pacotes
  no terminal que se abriu
  
