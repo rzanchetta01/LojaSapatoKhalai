@@ -7,5 +7,6 @@ namespace LojaSapatoKhalai.Models.ViewModels
 {
     public class ModeloViewModel
     {
+        public sting 
     }
 }

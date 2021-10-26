@@ -7,6 +7,6 @@ namespace LojaSapatoKhalai.Models.ViewModels
 {
     public class CategoriaViewModel
     {
-        
+        public string NomeCategoria { get; set; } 
     }
 }
