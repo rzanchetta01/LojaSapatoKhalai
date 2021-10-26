@@ -17,6 +17,6 @@ namespace lojaSapato.Models
         public string CodigoRef { get; set; }
         public string Cor { get; set; }
         public int Tamanho { get; set; }
-
+        public string Nome { get; set; }
     }
 }
