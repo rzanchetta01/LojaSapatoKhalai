@@ -11,8 +11,7 @@ namespace lojaSapato.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Modelo")]
-        public Modelo IdModelo { get; set; }
+        public int IdModelo { get; set; }
         public int Qnt { get; set; }
     }
 }

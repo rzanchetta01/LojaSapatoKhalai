@@ -11,12 +11,8 @@ namespace lojaSapato.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [ForeignKey("Modelo")]
-        public Modelo idModelo { get; set; }
-
-        [ForeignKey("Cliente")]
-        public Cliente idCliente { get; set; }
+        public int idModelo { get; set; }
+        public int idCliente { get; set; }
         public int Quantidade { get; set; }
         public string DtVenda { get; set; }
     }
