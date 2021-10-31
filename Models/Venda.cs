@@ -17,6 +17,7 @@ namespace lojaSapato.Models
 
         [ForeignKey("Cliente")]
         public Cliente idCliente { get; set; }
+
         public int Quantidade { get; set; }
         public string DtVenda { get; set; }
     }
