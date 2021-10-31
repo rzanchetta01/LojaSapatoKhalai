@@ -1,7 +1,9 @@
-﻿@model IEnumerable<lojaSapato.Models.Venda>
+﻿@model IEnumerable<lojaSapato.Models.ViewModels.HistoricoVendaViewModel>
+
 
 @{
     ViewData["Title"] = "Index";
+
 }
 
 <h1>Index</h1>
@@ -13,41 +15,62 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.idModelo)
+                @Html.DisplayNameFor(model => model.NomeModelo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idCliente)
+                @Html.DisplayNameFor(model => model.Categoria)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantidade)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DtVenda)
+                @Html.DisplayNameFor(model => model.PrecoModelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeFornecedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecoCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataVenda)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.idModelo)
+                @Html.DisplayFor(modelItem => item.NomeModelo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idCliente)
+                @Html.DisplayFor(modelItem => item.Categoria)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantidade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DtVenda)
+                @Html.DisplayFor(modelItem => item.PrecoModelo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.NomeFornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecoCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataVenda)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
             </td>
         </tr>
-}
+        }
+
     </tbody>
 </table>

@@ -53,6 +53,10 @@ namespace lojaSapato.Data
             modelBuilder.Entity<Modelo>()
                         .Property(p => p.Cor)
                         .HasMaxLength(50);
+
+            modelBuilder.Entity<Modelo>()
+                        .Property(p => p.Nome)
+                        .HasMaxLength(300);
         }
 
         private void CategoriaCreation(ModelBuilder modelBuilder)
