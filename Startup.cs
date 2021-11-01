@@ -23,7 +23,7 @@ namespace LojaSapatoKhalai
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(
-            Configuration.GetConnectionString("RodrigoConnection"))
+            Configuration.GetConnectionString("EstelaConnection"))
             );
             services.AddControllersWithViews();
         }

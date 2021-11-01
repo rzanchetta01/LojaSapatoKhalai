@@ -7,8 +7,8 @@ namespace LojaSapatoKhalai.Models.ViewModels
 {
     public class FornecedorViewModel
     {
-        public string Nome { get; set; }
-        public string CNPJ { get; set; }
-        public string Endereco { get; set; }
+        public List <string> Nome { get; set; }
+        public List <string> CNPJ { get; set; }
+        public List <string> Endereco { get; set; }
     }
 }
