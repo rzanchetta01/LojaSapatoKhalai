@@ -1,4 +1,4 @@
-﻿@model LojaSapatoKhalai.Models.Venda
+﻿@model LojaSapatoKhalai.Models.Fornecedor
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,32 +8,26 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Venda</h4>
+    <h4>Fornecedor</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.idModelo)
+            @Html.DisplayNameFor(model => model.Nome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.idModelo)
+            @Html.DisplayFor(model => model.Nome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.idCliente)
+            @Html.DisplayNameFor(model => model.CNPJ)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.idCliente)
+            @Html.DisplayFor(model => model.CNPJ)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantidade)
+            @Html.DisplayNameFor(model => model.Endereco)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantidade)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DtVenda)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DtVenda)
+            @Html.DisplayFor(model => model.Endereco)
         </dd>
     </dl>
     

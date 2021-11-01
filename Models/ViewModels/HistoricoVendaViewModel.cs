@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace lojaSapato.Models.ViewModels
+namespace LojaSapatoKhalai.Models.ViewModels
 {
     
     public class HistoricoVendaViewModel

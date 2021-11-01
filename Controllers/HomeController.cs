@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace lojaSapato.Controllers
+namespace LojaSapatoKhalai.Controllers
 {
     public class HomeController : Controller
     {

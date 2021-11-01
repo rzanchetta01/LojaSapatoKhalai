@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace lojaSapato.Models
+namespace LojaSapatoKhalai.Models
 {
     public class Venda
     {

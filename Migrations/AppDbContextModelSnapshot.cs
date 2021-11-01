@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using lojaSapato.Data;
+using LojaSapatoKhalai.Data;
 
 namespace LojaSapatoKhalai.Migrations
 {
@@ -18,7 +18,7 @@ namespace LojaSapatoKhalai.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("lojaSapato.Models.Categoria", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Cliente", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Estoque", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Estoque", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +80,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Estoques");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Fornecedor", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Fornecedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,7 +104,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Fornecedores");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Modelo", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Modelo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -140,7 +140,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Modelos");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Venda", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Venda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

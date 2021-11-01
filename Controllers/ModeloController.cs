@@ -1,9 +1,9 @@
-﻿using lojaSapato.Data;
-using lojaSapato.Models;
+﻿using LojaSapatoKhalai.Data;
+using LojaSapatoKhalai.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace lojaSapato.Controllers
+namespace LojaSapatoKhalai.Controllers
 {
     public class ModeloController : Controller
     {

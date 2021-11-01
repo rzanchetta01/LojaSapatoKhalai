@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using lojaSapato.Data;
-using lojaSapato.Models;
-using lojaSapato.Models.ViewModels;
+using LojaSapatoKhalai.Data;
+using LojaSapatoKhalai.Models;
+using LojaSapatoKhalai.Models.ViewModels;
 
 namespace LojaSapatoKhalai.Controllers
 {
