@@ -7,24 +7,54 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using lojaSapato.Data;
 using lojaSapato.Models;
+using lojaSapato.Models.ViewModels;
 
 namespace LojaSapatoKhalai.Controllers
 {
     public class VendasController : Controller
-    {
+    {        
         private readonly AppDbContext _context;
 
         public VendasController(AppDbContext context)
         {
             _context = context;
-        }
-
+        }        
         // GET: Vendas
-        public async Task<IActionResult> Index()
+        public async Task<List<HistoricoVendaViewModel>> getHistoricoVendas()
         {
-            return View(await _context.Vendas.ToListAsync());
+            List<HistoricoVendaViewModel> hvvms = new();
+                       
+            var venda = await _context.Vendas.ToListAsync();
+
+            foreach (var e in venda)
+            {
+                var modelo = await _context.Modelos.FirstOrDefaultAsync(m => m.Id == e.idModelo);
+                var fornecedore = await _context.Fornecedores.FirstOrDefaultAsync(f => f.Id == modelo.IdFornecedor);
+                var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == modelo.IdCategoria);
+                HistoricoVendaViewModel hvvm = new();
+
+                hvvm.NomeModelo = modelo.Nome;
+                hvvm.NomeFornecedor = fornecedore.Nome;
+                hvvm.PrecoModelo = modelo.Preco;
+                hvvm.Quantidade = e.Quantidade;
+                hvvm.Categoria = categoria.Nome;
+                hvvm.PrecoCompra = modelo.Preco * e.Quantidade;
+                hvvm.DataVenda = e.DtVenda;
+                hvvm.id = e.Id;
+                hvvms.Add(hvvm);
+            }
+
+            return hvvms;
         }
 
+
+        // GET:Historico Vendas
+        public async Task<IActionResult> Index()
+        {           
+            var x = await getHistoricoVendas();
+            return View(x.ToList());
+        }
+     
         // GET: Vendas/Details/5
         public async Task<IActionResult> Details(int? id)
         {

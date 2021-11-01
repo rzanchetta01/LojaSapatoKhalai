@@ -332,3 +332,8 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+Migrations/20211031164839_AttModelo.Designer.cs
+Migrations/20211031175729_AttCategoria.cs
+Migrations/20211031175729_AttCategoria.Designer.cs
+Migrations/AppDbContextModelSnapshot.cs
+Migrations/AppDbContextModelSnapshot.cs

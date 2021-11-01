@@ -12,9 +12,11 @@ namespace lojaSapato.Models
         [Key]
         public int Id { get; set; }
         public int IdFornecedor { get; set; }
+        public int IdCategoria { get; set; }
         public string CodigoRef { get; set; }
         public string Cor { get; set; }
         public int Tamanho { get; set; }
         public string Nome { get; set; }
+        public double Preco { get; set; }
     }
 }
