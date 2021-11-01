@@ -23,8 +23,7 @@ namespace LojaSapatoKhalai.Controllers
         public async Task<List<HistoricoVendaViewModel>> getHistoricoVendas()
         {
             List<HistoricoVendaViewModel> hvvms = new();
-            
-            Random rnd = new();
+                       
             var venda = await _context.Vendas.ToListAsync();
 
             foreach (var e in venda)
