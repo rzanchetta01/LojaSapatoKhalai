@@ -1,18 +1,16 @@
-﻿@model lojaSapato.Models.Fornecedor
+﻿@model LojaSapatoKhalai.Models.Fornecedor
 
 @{
-    ViewData["Title"] = "Cadastrar fornecedor";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Cadastro de Fornecedores</h1>
+<h1>Create</h1>
 
 <h4>Fornecedor</h4>
 <hr />
 <div class="row">
-    <div class="cadastros">
-
-        <form method="post" asp-controller="Fornecedor" asp-action="CadastrarFornecedor">
-
+    <div class="col-md-4">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -30,13 +28,14 @@
                 <span asp-validation-for="Endereco" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
 <div>
-    <a asp-action="Listar">Voltar</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

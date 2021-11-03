@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace lojaSapato.Controllers
+namespace LojaSapatoKhalai.Controllers
 {
     public class LoginController : Controller
     {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using lojaSapato.Models;
+using LojaSapatoKhalai.Models;
 
-namespace lojaSapato.Data
+namespace LojaSapatoKhalai.Data
 {
     public class AppDbContext : DbContext
     {

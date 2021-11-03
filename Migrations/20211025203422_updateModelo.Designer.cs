@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using lojaSapato.Data;
+using LojaSapatoKhalai.Data;
 
 namespace LojaSapatoKhalai.Migrations
 {
@@ -21,7 +21,7 @@ namespace LojaSapatoKhalai.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("lojaSapato.Models.Categoria", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Cliente", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Estoque", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Estoque", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Estoques");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Fornecedor", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Fornecedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,7 +109,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Fornecedores");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Modelo", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Modelo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Modelos");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Venda", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Venda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,31 +170,31 @@ namespace LojaSapatoKhalai.Migrations
                     b.ToTable("Vendas");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Estoque", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Estoque", b =>
                 {
-                    b.HasOne("lojaSapato.Models.Modelo", "IdModelo")
+                    b.HasOne("LojaSapatoKhalai.Models.Modelo", "IdModelo")
                         .WithMany()
                         .HasForeignKey("Modelo");
 
                     b.Navigation("IdModelo");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Modelo", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Modelo", b =>
                 {
-                    b.HasOne("lojaSapato.Models.Fornecedor", "IdFornecedor")
+                    b.HasOne("LojaSapatoKhalai.Models.Fornecedor", "IdFornecedor")
                         .WithMany()
                         .HasForeignKey("Fornecedor");
 
                     b.Navigation("IdFornecedor");
                 });
 
-            modelBuilder.Entity("lojaSapato.Models.Venda", b =>
+            modelBuilder.Entity("LojaSapatoKhalai.Models.Venda", b =>
                 {
-                    b.HasOne("lojaSapato.Models.Cliente", "idCliente")
+                    b.HasOne("LojaSapatoKhalai.Models.Cliente", "idCliente")
                         .WithMany()
                         .HasForeignKey("Cliente");
 
-                    b.HasOne("lojaSapato.Models.Modelo", "idModelo")
+                    b.HasOne("LojaSapatoKhalai.Models.Modelo", "idModelo")
                         .WithMany()
                         .HasForeignKey("Modelo");
 

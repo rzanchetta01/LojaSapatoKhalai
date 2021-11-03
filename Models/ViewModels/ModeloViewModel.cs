@@ -7,19 +7,17 @@ namespace LojaSapatoKhalai.Models.ViewModels
 {
     public class ModeloViewModel
     {
-        public int id { get; set ;}
-        
-        public int id_fornecedor { get; set ;}
-        
-        public string nome_fornecedor { get; set ;}
-        
-        public string nome { get; set ;}
-        
-        public string codigoRef { get; set ;}
-        
-        public string cor { get; set ;}
-        
-        public string tamanho { get; set ;}
-        
+        public string Nome { get; set; }
+
+        public List<int> Tamanhos { get; set; }
+
+        public List<string> Cores { get; set; }
+
+        public float Preco { get; set; }
+
+        public string Descricao { get; set; }
+
+        public List<string> Comentarios { get; set; }
+
     }
 }
