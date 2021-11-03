@@ -14,5 +14,14 @@ namespace LojaSapatoKhalai.Models
         public string CPF { get; set; }
         public string Endereco { get; set; }
         public string Sexo { get; set; }
+
+        public Cliente(int id, string nome, string cPF, string endereco, string sexo)
+        {
+            Id = id;
+            Nome = nome;
+            CPF = cPF;
+            Endereco = endereco;
+            Sexo = sexo;
+        }
     }
 }

@@ -32,6 +32,23 @@ namespace LojaSapatoKhalai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "Sapato de luxo"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "Chuteiras"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nome = "Sapatos casuais"
+                        });
                 });
 
             modelBuilder.Entity("LojaSapatoKhalai.Models.Cliente", b =>
@@ -60,6 +77,32 @@ namespace LojaSapatoKhalai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clientes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CPF = "1354532",
+                            Endereco = "Mansão maromba",
+                            Nome = "Rodrigo",
+                            Sexo = "m"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CPF = "765432123",
+                            Endereco = "Casa do bom filho",
+                            Nome = "Marcos",
+                            Sexo = "m"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CPF = "1354532",
+                            Endereco = "Rua Perdida das cruzes",
+                            Nome = "Ana",
+                            Sexo = "f"
+                        });
                 });
 
             modelBuilder.Entity("LojaSapatoKhalai.Models.Estoque", b =>
@@ -78,6 +121,26 @@ namespace LojaSapatoKhalai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estoques");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IdModelo = 1,
+                            Qnt = 1000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IdModelo = 2,
+                            Qnt = 10
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IdModelo = 3,
+                            Qnt = 110
+                        });
                 });
 
             modelBuilder.Entity("LojaSapatoKhalai.Models.Fornecedor", b =>
@@ -102,6 +165,29 @@ namespace LojaSapatoKhalai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Fornecedores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CNPJ = "1953049285142",
+                            Endereco = "China, shin shon shun",
+                            Nome = "China in Shoes"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CNPJ = "1276629478241",
+                            Endereco = "Africa do Sul, Cidade do Cabo",
+                            Nome = "Africa has Shoes"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CNPJ = "9994724861245",
+                            Endereco = "India, Nova Dehli",
+                            Nome = "India doens't do Shoes"
+                        });
                 });
 
             modelBuilder.Entity("LojaSapatoKhalai.Models.Modelo", b =>
@@ -138,6 +224,41 @@ namespace LojaSapatoKhalai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Modelos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CodigoRef = "asnaeb",
+                            Cor = "Branco",
+                            IdCategoria = 1,
+                            IdFornecedor = 1,
+                            Nome = "Supreme Ben 10 mil",
+                            Preco = 1500.0,
+                            Tamanho = 36
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CodigoRef = "asnaeba",
+                            Cor = "Preto",
+                            IdCategoria = 2,
+                            IdFornecedor = 2,
+                            Nome = "Chute certo",
+                            Preco = 350.0,
+                            Tamanho = 42
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CodigoRef = "asnaebbbe",
+                            Cor = "Cinza",
+                            IdCategoria = 3,
+                            IdFornecedor = 3,
+                            Nome = "Skatenis",
+                            Preco = 150.0,
+                            Tamanho = 39
+                        });
                 });
 
             modelBuilder.Entity("LojaSapatoKhalai.Models.Venda", b =>
@@ -163,6 +284,32 @@ namespace LojaSapatoKhalai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vendas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DtVenda = "22/06/2021",
+                            Quantidade = 10,
+                            idCliente = 1,
+                            idModelo = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DtVenda = "19/10/2021",
+                            Quantidade = 1,
+                            idCliente = 2,
+                            idModelo = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DtVenda = "03/11/2021",
+                            Quantidade = 1,
+                            idCliente = 3,
+                            idModelo = 3
+                        });
                 });
 #pragma warning restore 612, 618
         }

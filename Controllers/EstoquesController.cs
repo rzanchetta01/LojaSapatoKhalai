@@ -11,47 +11,41 @@ using LojaSapatoKhalai.Models.ViewModels;
 
 namespace LojaSapatoKhalai.Controllers
 {
-    public class ModeloController : Controller
+    public class EstoquesController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ModeloController(AppDbContext context)
+        public EstoquesController(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<ModeloViewModel>> getViewModel()
+        public async Task<List<EstoqueViewModel>> getViewModel()
         {
-            List<ModeloViewModel> mvms = new();
+            List<EstoqueViewModel> evms = new();
+            var estoque = await _context.Estoques.ToListAsync();
 
-            var modelo = await _context.Modelos.ToListAsync();
-            foreach (var m in modelo)
+            foreach (var e in estoque)
             {
-                ModeloViewModel mvm = new();
-                var fonecedor = await _context.Fornecedores.FirstOrDefaultAsync(f => f.Id == m.Id);
-                var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == m.Id);
+                EstoqueViewModel evm = new();
+                var modelo = await _context.Modelos.FirstOrDefaultAsync(m => m.Id == e.IdModelo);
 
-                mvm.Id = m.Id;
-                mvm.Nome = m.Nome;
-                mvm.Preco = m.Preco;
-                mvm.Tamanho = m.Tamanho;
-                mvm.Fornecedor = fonecedor.Nome;
-                mvm.Categoria = categoria.Nome;
-                mvm.Cor = m.Cor;
-                mvms.Add(mvm);
+                evm.Id = e.Id;
+                evm.Modelo = modelo.Nome;
+                evm.Quantidade = e.Qnt;
+                evms.Add(evm);
             }
-
-            return mvms;
+            return evms;
         }
 
-        // GET: Modelo
+        // GET: Estoques
         public async Task<IActionResult> Index()
         {
             var x = await getViewModel();
             return View(x.ToList());
         }
 
-        // GET: Modelo/Details/5
+        // GET: Estoques/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -59,39 +53,39 @@ namespace LojaSapatoKhalai.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelos
+            var estoque = await _context.Estoques
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (modelo == null)
+            if (estoque == null)
             {
                 return NotFound();
             }
 
-            return View(modelo);
+            return View(estoque);
         }
 
-        // GET: Modelo/Create
+        // GET: Estoques/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Modelo/Create
+        // POST: Estoques/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdFornecedor,IdCategoria,CodigoRef,Cor,Tamanho,Nome,Preco")] Modelo modelo)
+        public async Task<IActionResult> Create([Bind("Id,IdModelo,Qnt")] Estoque estoque)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(modelo);
+                _context.Add(estoque);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(modelo);
+            return View(estoque);
         }
 
-        // GET: Modelo/Edit/5
+        // GET: Estoques/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,22 +93,22 @@ namespace LojaSapatoKhalai.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelos.FindAsync(id);
-            if (modelo == null)
+            var estoque = await _context.Estoques.FindAsync(id);
+            if (estoque == null)
             {
                 return NotFound();
             }
-            return View(modelo);
+            return View(estoque);
         }
 
-        // POST: Modelo/Edit/5
+        // POST: Estoques/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdFornecedor,IdCategoria,CodigoRef,Cor,Tamanho,Nome,Preco")] Modelo modelo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdModelo,Qnt")] Estoque estoque)
         {
-            if (id != modelo.Id)
+            if (id != estoque.Id)
             {
                 return NotFound();
             }
@@ -123,12 +117,12 @@ namespace LojaSapatoKhalai.Controllers
             {
                 try
                 {
-                    _context.Update(modelo);
+                    _context.Update(estoque);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ModeloExists(modelo.Id))
+                    if (!EstoqueExists(estoque.Id))
                     {
                         return NotFound();
                     }
@@ -139,10 +133,10 @@ namespace LojaSapatoKhalai.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(modelo);
+            return View(estoque);
         }
 
-        // GET: Modelo/Delete/5
+        // GET: Estoques/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,30 +144,30 @@ namespace LojaSapatoKhalai.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelos
+            var estoque = await _context.Estoques
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (modelo == null)
+            if (estoque == null)
             {
                 return NotFound();
             }
 
-            return View(modelo);
+            return View(estoque);
         }
 
-        // POST: Modelo/Delete/5
+        // POST: Estoques/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var modelo = await _context.Modelos.FindAsync(id);
-            _context.Modelos.Remove(modelo);
+            var estoque = await _context.Estoques.FindAsync(id);
+            _context.Estoques.Remove(estoque);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ModeloExists(int id)
+        private bool EstoqueExists(int id)
         {
-            return _context.Modelos.Any(e => e.Id == id);
+            return _context.Estoques.Any(e => e.Id == id);
         }
     }
 }

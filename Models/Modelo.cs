@@ -18,5 +18,17 @@ namespace LojaSapatoKhalai.Models
         public int Tamanho { get; set; }
         public string Nome { get; set; }
         public double Preco { get; set; }
+
+        public Modelo(int id, int idFornecedor, int idCategoria, string codigoRef, string cor, int tamanho, string nome, double preco)
+        {
+            Id = id;
+            IdFornecedor = idFornecedor;
+            IdCategoria = idCategoria;
+            CodigoRef = codigoRef;
+            Cor = cor;
+            Tamanho = tamanho;
+            Nome = nome;
+            Preco = preco;
+        }
     }
 }

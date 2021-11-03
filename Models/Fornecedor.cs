@@ -14,5 +14,12 @@ namespace LojaSapatoKhalai.Models
         public string CNPJ { get; set; }
         public string Endereco { get; set; }
 
+        public Fornecedor(int id, string nome, string cNPJ, string endereco)
+        {
+            Id = id;
+            Nome = nome;
+            CNPJ = cNPJ;
+            Endereco = endereco;
+        }
     }
 }

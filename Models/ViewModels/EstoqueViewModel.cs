@@ -7,10 +7,10 @@ namespace LojaSapatoKhalai.Models.ViewModels
 {
     public class EstoqueViewModel
     {
-        public List<int> id { get; set; }
+        public int Id { get; set; }
+        public string Modelo { get; set; }
 
-        public List<int> quantidade { get; set; }
+        public int Quantidade { get; set; }
 
-        public List<int> fornecedor { get; set; }
     }
 }

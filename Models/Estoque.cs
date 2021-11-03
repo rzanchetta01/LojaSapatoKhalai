@@ -13,5 +13,12 @@ namespace LojaSapatoKhalai.Models
         public int Id { get; set; }
         public int IdModelo { get; set; }
         public int Qnt { get; set; }
+
+        public Estoque(int id, int idModelo, int qnt)
+        {
+            Id = id;
+            IdModelo = idModelo;
+            Qnt = qnt;
+        }
     }
 }

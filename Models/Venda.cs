@@ -15,5 +15,14 @@ namespace LojaSapatoKhalai.Models
         public int idCliente { get; set; }
         public int Quantidade { get; set; }
         public string DtVenda { get; set; }
+
+        public Venda(int id, int idModelo, int idCliente, int quantidade, string dtVenda)
+        {
+            Id = id;
+            this.idModelo = idModelo;
+            this.idCliente = idCliente;
+            Quantidade = quantidade;
+            DtVenda = dtVenda;
+        }
     }
 }

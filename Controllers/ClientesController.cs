@@ -7,51 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LojaSapatoKhalai.Data;
 using LojaSapatoKhalai.Models;
-using LojaSapatoKhalai.Models.ViewModels;
 
 namespace LojaSapatoKhalai.Controllers
 {
-    public class ModeloController : Controller
+    public class ClientesController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ModeloController(AppDbContext context)
+        public ClientesController(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<ModeloViewModel>> getViewModel()
-        {
-            List<ModeloViewModel> mvms = new();
-
-            var modelo = await _context.Modelos.ToListAsync();
-            foreach (var m in modelo)
-            {
-                ModeloViewModel mvm = new();
-                var fonecedor = await _context.Fornecedores.FirstOrDefaultAsync(f => f.Id == m.Id);
-                var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == m.Id);
-
-                mvm.Id = m.Id;
-                mvm.Nome = m.Nome;
-                mvm.Preco = m.Preco;
-                mvm.Tamanho = m.Tamanho;
-                mvm.Fornecedor = fonecedor.Nome;
-                mvm.Categoria = categoria.Nome;
-                mvm.Cor = m.Cor;
-                mvms.Add(mvm);
-            }
-
-            return mvms;
-        }
-
-        // GET: Modelo
+        // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            var x = await getViewModel();
-            return View(x.ToList());
+            return View(await _context.Clientes.ToListAsync());
         }
 
-        // GET: Modelo/Details/5
+        // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -59,39 +33,39 @@ namespace LojaSapatoKhalai.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelos
+            var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (modelo == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            return View(modelo);
+            return View(cliente);
         }
 
-        // GET: Modelo/Create
+        // GET: Clientes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Modelo/Create
+        // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdFornecedor,IdCategoria,CodigoRef,Cor,Tamanho,Nome,Preco")] Modelo modelo)
+        public async Task<IActionResult> Create([Bind("Id,Nome,CPF,Endereco,Sexo")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(modelo);
+                _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(modelo);
+            return View(cliente);
         }
 
-        // GET: Modelo/Edit/5
+        // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,22 +73,22 @@ namespace LojaSapatoKhalai.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelos.FindAsync(id);
-            if (modelo == null)
+            var cliente = await _context.Clientes.FindAsync(id);
+            if (cliente == null)
             {
                 return NotFound();
             }
-            return View(modelo);
+            return View(cliente);
         }
 
-        // POST: Modelo/Edit/5
+        // POST: Clientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdFornecedor,IdCategoria,CodigoRef,Cor,Tamanho,Nome,Preco")] Modelo modelo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,CPF,Endereco,Sexo")] Cliente cliente)
         {
-            if (id != modelo.Id)
+            if (id != cliente.Id)
             {
                 return NotFound();
             }
@@ -123,12 +97,12 @@ namespace LojaSapatoKhalai.Controllers
             {
                 try
                 {
-                    _context.Update(modelo);
+                    _context.Update(cliente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ModeloExists(modelo.Id))
+                    if (!ClienteExists(cliente.Id))
                     {
                         return NotFound();
                     }
@@ -139,10 +113,10 @@ namespace LojaSapatoKhalai.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(modelo);
+            return View(cliente);
         }
 
-        // GET: Modelo/Delete/5
+        // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,30 +124,30 @@ namespace LojaSapatoKhalai.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelos
+            var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (modelo == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            return View(modelo);
+            return View(cliente);
         }
 
-        // POST: Modelo/Delete/5
+        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var modelo = await _context.Modelos.FindAsync(id);
-            _context.Modelos.Remove(modelo);
+            var cliente = await _context.Clientes.FindAsync(id);
+            _context.Clientes.Remove(cliente);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ModeloExists(int id)
+        private bool ClienteExists(int id)
         {
-            return _context.Modelos.Any(e => e.Id == id);
+            return _context.Clientes.Any(e => e.Id == id);
         }
     }
 }
