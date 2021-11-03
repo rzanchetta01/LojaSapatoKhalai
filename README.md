@@ -7,6 +7,11 @@
 * entity framework core.tools
 * entity framework core.desing
 
+# Cuidados
+* Não adcionar nada que ja tenha no banco de dados (por exemplo: mesmo id)
+* Não registrar nenhuma venda com um id inesistente
+* Rodar o app sem terminar os passo a passos
+
 # Configurando ambiente
 1. Adicionar uma connection string sua em appSetings.json
 2. Alterar em startup.cs para sua connection string no método ConfigureServices assim evitando problemas com o sql
